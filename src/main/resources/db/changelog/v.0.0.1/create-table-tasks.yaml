@@ -1,0 +1,49 @@
+databaseChangeLog:
+  - changeSet:
+      id: create_tasks
+      author: Vasilenko Dmitriy
+      comment: Создание таблицы c информацией о задачах
+      changes:
+        - createTable:
+            tableName: tasks
+            columns:
+              - column:
+                  name: id
+                  type: UUID
+                  constraints:
+                    primaryKey: true
+                  remarks: ID задачи
+                  defaultValueComputed: gen_random_uuid()
+
+              - column:
+                  name: title
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+                  remarks: Название задачи
+
+              - column:
+                  name: description
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+                  remarks: Описание задачи
+
+              - column:
+                  name: status
+                  type: varchar(20)
+                  constraints:
+                    nullable: false
+                  remarks: Статус задачи
+
+              - column:
+                  name: user_id
+                  type: UUID
+                  remarks: Исполнитель задачи
+
+        - addForeignKeyConstraint:
+            baseTableName: tasks
+            baseColumnNames: user_id
+            constraintName: fk_tasks_user_id
+            referencedTableName: users
+            referencedColumnNames: id
