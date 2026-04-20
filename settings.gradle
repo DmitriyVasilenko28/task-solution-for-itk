@@ -1,1 +1,3 @@
 rootProject.name = 'task-solution-for-itk'
+include 'task-service'
+include 'auth-service'

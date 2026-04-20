@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AmplicodeDatabaseMigrationSettings" liquibaseFileType="YAML" />
+  <component name="AmplicodePersistenceUnitSettings">
+    <persistence-units>
+      <persistence-unit moduleName="task-solution-for-itk.auth-service.main" name="Default">
+        <packages>
+          <package value="org.example" />
+        </packages>
+      </persistence-unit>
+      <persistence-unit moduleName="task-solution-for-itk.task-service.main" name="Default">
+        <packages>
+          <package value="org.example" />
+        </packages>
+      </persistence-unit>
+    </persistence-units>
+  </component>
+</project>

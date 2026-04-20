@@ -1,0 +1,27 @@
+server:
+  port: ${APPLICATION_PORT:8082}
+
+spring:
+  application:
+    security:
+      jwt:
+        secret-key: 841D8A6C80CBA4FCAD32D5367C18C53B
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/db_itk
+    username: user
+    password: password
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      maximum-pool-size: 50
+      connection-timeout: 30000
+      idle-timeout: 600000
+
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.PostgreSQLDialect

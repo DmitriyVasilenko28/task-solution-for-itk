@@ -1,0 +1,40 @@
+plugins {
+    id 'org.springframework.boot'
+}
+
+ext {
+    mapstructVersion = '1.6.3'
+    lombokVersion = '1.18.30'
+    mapstructBindingVersion = '0.2.0'
+}
+
+dependencies {
+    implementation(
+            'org.springframework.boot:spring-boot-starter-security',
+            'org.springframework.boot:spring-boot-starter-web',
+            'org.springframework.boot:spring-boot-starter-data-jpa',
+            'org.springframework.boot:spring-boot-starter-validation',
+            'org.postgresql:postgresql',
+            "org.mapstruct:mapstruct:$mapstructVersion",
+            'io.jsonwebtoken:jjwt-api:0.11.5'
+    )
+
+    runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.11.5'
+    runtimeOnly 'io.jsonwebtoken:jjwt-jackson:0.11.5'
+
+    compileOnly "org.projectlombok:lombok:$lombokVersion"
+
+    annotationProcessor(
+            "org.projectlombok:lombok:$lombokVersion",
+            "org.projectlombok:lombok-mapstruct-binding:$mapstructBindingVersion",
+            "org.mapstruct:mapstruct-processor:$mapstructVersion"
+    )
+
+    testImplementation platform('org.junit:junit-bom:6.0.0')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+test {
+    useJUnitPlatform()
+}

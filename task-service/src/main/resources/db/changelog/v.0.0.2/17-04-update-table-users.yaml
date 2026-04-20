@@ -1,0 +1,29 @@
+databaseChangeLog:
+  - changeSet:
+      id: update-table-users
+      author: Vasilenko Dmitriy
+      comment: Добавление констрейнтов для существующих полей, добавление поля password
+      changes:
+        - addUniqueConstraint:
+            tableName: users
+            columnNames: username
+            constraintName: uq_users_username
+        - addUniqueConstraint:
+            tableName: users
+            columnNames: email
+            constraintName: uq_users_email
+
+        - addColumn:
+            tableName: users
+            columns:
+              - column:
+                  name: user_auth_id
+                  type: UUID
+                  remarks: Ссылка на пароль пользователя
+
+        - addForeignKeyConstraint:
+            baseTableName: users
+            baseColumnNames: user_auth_id
+            constraintName: fk_user_auth_id
+            referencedTableName: users_auth
+            referencedColumnNames: id

@@ -1,0 +1,13 @@
+databaseChangeLog:
+  - include:
+      file: v.0.0.2/17-04-create-table-users-auth.yaml
+      relativeToChangelogFile: true
+  - include:
+      file: v.0.0.1/create-table-users.yaml
+      relativeToChangelogFile: true
+  - include:
+      file: v.0.0.1/create-table-tasks.yaml
+      relativeToChangelogFile: true
+  - include:
+      file: v.0.0.2/17-04-update-table-users.yaml
+      relativeToChangelogFile: true

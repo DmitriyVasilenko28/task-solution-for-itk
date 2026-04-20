@@ -1,0 +1,30 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-table-users
+      author: Vasilenko Dmitriy
+      comment: Создание таблицы c информацией о пользователях
+      changes:
+        - createTable:
+            tableName: users
+            columns:
+              - column:
+                  name: id
+                  type: UUID
+                  constraints:
+                    primaryKey: true
+                  remarks: ID пользователя
+                  defaultValueComputed: gen_random_uuid()
+
+              - column:
+                  name: username
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+                  remarks: Имя пользователя
+
+              - column:
+                  name: email
+                  type: varchar(40)
+                  constraints:
+                    nullable: false
+                  remarks: Имеил пользователя

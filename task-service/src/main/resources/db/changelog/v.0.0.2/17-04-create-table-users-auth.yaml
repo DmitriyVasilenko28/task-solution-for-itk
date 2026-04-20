@@ -1,0 +1,23 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-table-users-auth
+      author: Vasilenko Dmitriy
+      comment: Создание таблицы c зашифрованными паролями пользователей
+      changes:
+        - createTable:
+            tableName: users_auth
+            columns:
+              - column:
+                  name: id
+                  type: UUID
+                  constraints:
+                    primaryKey: true
+                  remarks: ID пароля пользователя
+                  defaultValueComputed: gen_random_uuid()
+
+              - column:
+                  name: password
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+                  remarks: Зашифрованный пароль пользователя
